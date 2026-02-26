@@ -1,0 +1,11 @@
+export { Header } from "./Header";
+export { Hero } from "./Hero";
+export { About } from "./About";
+export { TheRealProblem } from "./TheRealProblem";
+export { WhatIBuild } from "./WhatIBuild";
+export { HowItWorks } from "./HowItWorks";
+export { CaseStudyKnowledge } from "./CaseStudyKnowledge";
+export { CaseStudyLeadQualification } from "./CaseStudyLeadQualification";
+export { Services } from "./Services";
+export { FinalCTA } from "./FinalCTA";
+export { Footer } from "./Footer";
