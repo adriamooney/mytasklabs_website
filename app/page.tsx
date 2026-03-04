@@ -1,5 +1,4 @@
 import {
-  Header,
   Hero,
   About,
   TheRealProblem,
@@ -9,7 +8,6 @@ import {
   // CaseStudyLeadQualification,
   Services,
   FinalCTA,
-  Footer,
 } from "@/components";
 
 const CALENDLY_URL =
@@ -18,7 +16,6 @@ const CALENDLY_URL =
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <Header />
       <Hero calendlyUrl={CALENDLY_URL} />
       <About />
       <TheRealProblem />
@@ -28,7 +25,6 @@ export default function Home() {
       <CaseStudyLeadQualification /> */}
       <Services />
       <FinalCTA calendlyUrl={CALENDLY_URL} />
-      <Footer />
     </div>
   );
 }

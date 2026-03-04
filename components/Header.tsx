@@ -4,7 +4,7 @@ const navItems = [
   { label: "About", href: "#about" },
   { label: "How it works", href: "#how-it-works" },
   { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Header() {
@@ -18,15 +18,25 @@ export function Header() {
           My Task Labs
         </Link>
         <nav className="flex gap-6" aria-label="Main navigation">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm text-stone-600 hover:text-neutral-850 transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) =>
+            item.href.startsWith("#") ? (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-sm text-stone-600 hover:text-neutral-850 transition-colors"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-stone-600 hover:text-neutral-850 transition-colors"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
       </div>
     </header>

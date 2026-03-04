@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Header, Footer } from "@/components";
 
 export const metadata: Metadata = {
   title: "AI Systems That Increase Operational Performance",
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased font-sans text-neutral-850 bg-stone-50 min-h-screen">
-        {children}
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
