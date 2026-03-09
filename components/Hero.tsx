@@ -11,9 +11,9 @@ export function Hero({ calendlyUrl }: HeroProps) {
         AI Systems That Increase Operational Performance
       </h1>
       <p className="mt-6 text-lg text-stone-600 leading-relaxed max-w-2xl mx-auto">
-        I help operations-heavy teams reduce manual workload, respond faster to
+        Helping operations-heavy teams reduce manual workload, respond faster to
         opportunities, and eliminate workflow bottlenecks using practical AI
-        automation layered on top of their existing tools.
+        automation.
       </p>
       <Link
         href={calendlyUrl}

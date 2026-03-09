@@ -1,6 +1,6 @@
 import {
   Hero,
-  About,
+  Team,
   TheRealProblem,
   WhatIBuild,
   HowItWorks,
@@ -17,13 +17,12 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Hero calendlyUrl={CALENDLY_URL} />
-      <About />
+      
       <TheRealProblem />
       <WhatIBuild />
       <HowItWorks />
-      {/* <CaseStudyKnowledge />
-      <CaseStudyLeadQualification /> */}
       <Services />
+      <Team />
       <FinalCTA calendlyUrl={CALENDLY_URL} />
     </div>
   );

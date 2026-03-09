@@ -8,10 +8,30 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          "system-ui",
+          "ui-sans-serif",
+          "SF Pro Text",
+          "SF Pro Display",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "sans-serif",
+        ],
+      },
       colors: {
         neutral: {
-          850: "#1c1c1e",
-          925: "#0f0f10",
+          850: "#0b1020",
+          925: "#050713",
+        },
+        brand: {
+          ink: "#0b1020",
+          teal: "#0f766e",
+          tealSoft: "#e0f2f1",
+          sand: "#f7efe6",
+          accent: "#f97316",
         },
       },
     },

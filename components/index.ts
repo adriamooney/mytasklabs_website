@@ -1,6 +1,6 @@
 export { Header } from "./Header";
 export { Hero } from "./Hero";
-export { About } from "./About";
+export { Team } from "./Team";
 export { TheRealProblem } from "./TheRealProblem";
 export { WhatIBuild } from "./WhatIBuild";
 export { HowItWorks } from "./HowItWorks";
