@@ -1,0 +1,395 @@
+# Style Guide: Background Paths Aesthetic
+
+This style guide defines the visual language for a minimal, elegant info website inspired by the Background Paths hero component. The aesthetic emphasizes clean neutrals, subtle gradients, refined typography, and smooth animations.
+
+---
+
+## Color Palette
+
+Use a strictly neutral palette with subtle opacity variations for depth.
+
+### Light Mode
+```
+Background:       white / #ffffff
+Foreground:       neutral-900 / #171717
+Muted:            neutral-700 / #404040 (80% opacity for secondary text)
+Border:           black/10 (10% black opacity)
+Surface:          white/95 (frosted glass effect)
+```
+
+### Dark Mode
+```
+Background:       neutral-950 / #0a0a0a
+Foreground:       white / #ffffff
+Muted:            white/80 (80% white opacity for secondary text)
+Border:           white/10 (10% white opacity)
+Surface:          black/95 (frosted glass effect)
+```
+
+### Tailwind Classes
+```css
+/* Backgrounds */
+bg-white dark:bg-neutral-950
+
+/* Text - Primary */
+text-neutral-900 dark:text-white
+
+/* Text - Secondary/Muted */
+text-neutral-700/80 dark:text-white/80
+
+/* Borders */
+border-black/10 dark:border-white/10
+
+/* Surfaces with glassmorphism */
+bg-white/95 dark:bg-black/95 backdrop-blur-md
+```
+
+---
+
+## Typography
+
+### Font Stack
+Use a geometric sans-serif system. Recommended: **Inter** or **Geist Sans**.
+
+```tsx
+// next.config or layout.tsx
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
+```
+
+### Scale & Weights
+
+| Element | Size | Weight | Tracking | Classes |
+|---------|------|--------|----------|---------|
+| Hero Title | 5xl-8xl | Bold (700) | Tighter | `text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter` |
+| Page Title (h1) | 4xl-5xl | Bold (700) | Tighter | `text-4xl md:text-5xl font-bold tracking-tighter` |
+| Section Title (h2) | 2xl-3xl | Semibold (600) | Tight | `text-2xl md:text-3xl font-semibold tracking-tight` |
+| Subsection (h3) | xl-2xl | Semibold (600) | Tight | `text-xl md:text-2xl font-semibold tracking-tight` |
+| Body Large | lg | Normal (400) | Normal | `text-lg leading-relaxed` |
+| Body | base | Normal (400) | Normal | `text-base leading-relaxed` |
+| Small/Caption | sm | Medium (500) | Normal | `text-sm text-neutral-700/80 dark:text-white/80` |
+
+### Gradient Text (Hero Only)
+Use gradient text sparingly for hero titles only:
+
+```tsx
+<span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 to-neutral-700/80 dark:from-white dark:to-white/80">
+  Your Title
+</span>
+```
+
+---
+
+## Buttons
+
+### Primary Button
+Frosted glass effect with subtle gradient border wrapper.
+
+```tsx
+<div className="inline-block group relative bg-gradient-to-b from-black/10 to-white/10 dark:from-white/10 dark:to-black/10 p-px rounded-2xl backdrop-blur-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+  <button className="rounded-[1.15rem] px-8 py-4 text-base font-semibold backdrop-blur-md bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 text-black dark:text-white transition-all duration-300 group-hover:-translate-y-0.5 border border-black/10 dark:border-white/10 hover:shadow-md dark:hover:shadow-neutral-800/50">
+    <span className="opacity-90 group-hover:opacity-100 transition-opacity">Button Text</span>
+    <span className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">→</span>
+  </button>
+</div>
+```
+
+### Secondary Button (Ghost)
+Minimal, transparent with border.
+
+```tsx
+<button className="px-6 py-3 text-sm font-medium rounded-xl border border-black/10 dark:border-white/10 text-neutral-900 dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200">
+  Secondary Action
+</button>
+```
+
+### Text Link Button
+```tsx
+<button className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors duration-200 underline-offset-4 hover:underline">
+  Learn more
+</button>
+```
+
+---
+
+## Cards
+
+### Standard Card
+```tsx
+<div className="group relative bg-gradient-to-b from-black/5 to-transparent dark:from-white/5 dark:to-transparent p-px rounded-2xl overflow-hidden">
+  <div className="rounded-[calc(1rem-1px)] p-6 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-sm border border-black/5 dark:border-white/5">
+    <h3 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white mb-2">
+      Card Title
+    </h3>
+    <p className="text-neutral-700/80 dark:text-white/70 leading-relaxed">
+      Card description text goes here with relaxed line height for readability.
+    </p>
+  </div>
+</div>
+```
+
+### Elevated Card (Interactive)
+```tsx
+<div className="group relative bg-gradient-to-b from-black/10 to-white/10 dark:from-white/10 dark:to-black/10 p-px rounded-2xl backdrop-blur-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+  <div className="rounded-[calc(1rem-1px)] p-6 bg-white/95 dark:bg-black/95 backdrop-blur-md group-hover:-translate-y-0.5 transition-transform duration-300">
+    <h3 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white mb-2">
+      Interactive Card
+    </h3>
+    <p className="text-neutral-700/80 dark:text-white/70 leading-relaxed">
+      This card lifts on hover with a subtle shadow increase.
+    </p>
+  </div>
+</div>
+```
+
+### Feature Card with Icon
+```tsx
+<div className="p-6 rounded-2xl border border-black/10 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-sm">
+  <div className="w-10 h-10 rounded-xl bg-neutral-900 dark:bg-white flex items-center justify-center mb-4">
+    <IconComponent className="w-5 h-5 text-white dark:text-neutral-900" />
+  </div>
+  <h3 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-white mb-2">
+    Feature Title
+  </h3>
+  <p className="text-sm text-neutral-700/80 dark:text-white/70 leading-relaxed">
+    Feature description with smaller text for density.
+  </p>
+</div>
+```
+
+---
+
+## Lists
+
+### Unordered List
+```tsx
+<ul className="space-y-3">
+  <li className="flex items-start gap-3">
+    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-neutral-400 dark:bg-neutral-600 shrink-0" />
+    <span className="text-neutral-700 dark:text-neutral-300 leading-relaxed">
+      List item with comfortable spacing and subtle bullet
+    </span>
+  </li>
+</ul>
+```
+
+### Ordered List
+```tsx
+<ol className="space-y-4">
+  <li className="flex items-start gap-4">
+    <span className="flex items-center justify-center w-7 h-7 rounded-full bg-neutral-100 dark:bg-neutral-800 text-sm font-semibold text-neutral-900 dark:text-white shrink-0">
+      1
+    </span>
+    <div>
+      <p className="font-medium text-neutral-900 dark:text-white">Step title</p>
+      <p className="text-sm text-neutral-700/80 dark:text-white/70 mt-1">
+        Step description with additional context.
+      </p>
+    </div>
+  </li>
+</ol>
+```
+
+### Check List
+```tsx
+<ul className="space-y-3">
+  <li className="flex items-center gap-3">
+    <div className="w-5 h-5 rounded-full bg-neutral-900 dark:bg-white flex items-center justify-center">
+      <svg className="w-3 h-3 text-white dark:text-neutral-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+    <span className="text-neutral-700 dark:text-neutral-300">Feature or benefit item</span>
+  </li>
+</ul>
+```
+
+---
+
+## Spacing & Layout
+
+### Container
+```tsx
+<div className="container mx-auto px-4 md:px-6">
+  {/* Content */}
+</div>
+```
+
+### Section Spacing
+```tsx
+<section className="py-16 md:py-24 lg:py-32">
+  {/* Section content */}
+</section>
+```
+
+### Content Width Constraints
+```css
+/* Hero/Large headlines */
+max-w-4xl mx-auto
+
+/* Body content */
+max-w-3xl mx-auto
+
+/* Narrow content (forms, etc) */
+max-w-xl mx-auto
+```
+
+### Grid Layouts
+```tsx
+/* 2-column features */
+<div className="grid md:grid-cols-2 gap-6 md:gap-8">
+
+/* 3-column cards */
+<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+/* 4-column footer links */
+<div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+```
+
+---
+
+## Animations & Transitions
+
+### Standard Transitions
+```css
+/* Default for interactive elements */
+transition-all duration-300
+
+/* Quick feedback (hover states) */
+transition-colors duration-200
+
+/* Shadow changes */
+transition-shadow duration-300
+```
+
+### Framer Motion Patterns
+
+**Fade In:**
+```tsx
+initial={{ opacity: 0 }}
+animate={{ opacity: 1 }}
+transition={{ duration: 0.6 }}
+```
+
+**Slide Up:**
+```tsx
+initial={{ y: 20, opacity: 0 }}
+animate={{ y: 0, opacity: 1 }}
+transition={{ duration: 0.5, ease: "easeOut" }}
+```
+
+**Staggered Children:**
+```tsx
+// Parent
+variants={{
+  visible: { transition: { staggerChildren: 0.1 } }
+}}
+
+// Child
+variants={{
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 150, damping: 25 } }
+}}
+```
+
+**Spring for Playful Motion:**
+```tsx
+transition={{
+  type: "spring",
+  stiffness: 150,
+  damping: 25
+}}
+```
+
+---
+
+## Borders & Shadows
+
+### Border Radius Scale
+```css
+rounded-lg     /* 0.5rem - inputs, small elements */
+rounded-xl     /* 0.75rem - buttons, small cards */
+rounded-2xl    /* 1rem - cards, modals */
+rounded-[1.15rem] /* Custom for primary buttons */
+```
+
+### Shadows
+```css
+/* Subtle elevation */
+shadow-lg
+
+/* Interactive hover */
+hover:shadow-xl
+
+/* Dark mode shadow */
+dark:hover:shadow-neutral-800/50
+```
+
+### Glassmorphism Recipe
+```tsx
+className="backdrop-blur-md bg-white/95 dark:bg-black/95 border border-black/10 dark:border-white/10"
+```
+
+---
+
+## Iconography
+
+- Use line icons (stroke-based), not filled
+- Consistent stroke width: 1.5 or 2
+- Sizes: 16px (inline), 20px (buttons), 24px (standalone)
+- Color: Match text color or use muted variant
+
+```tsx
+<IconComponent className="w-5 h-5 text-neutral-700 dark:text-neutral-300" strokeWidth={1.5} />
+```
+
+---
+
+## Do's and Don'ts
+
+### Do
+- Use generous whitespace
+- Maintain high contrast for text readability
+- Use subtle opacity variations for hierarchy
+- Apply glassmorphism sparingly for key interactive elements
+- Use spring animations for a premium feel
+
+### Don't
+- Use more than 2 font weights per element
+- Apply gradient text to body copy
+- Use harsh shadows (prefer subtle, diffused shadows)
+- Over-animate (reserve motion for meaningful interactions)
+- Use colors outside the neutral palette unless intentional accent
+
+---
+
+## Example Page Structure
+
+```tsx
+<main className="min-h-screen bg-white dark:bg-neutral-950">
+  {/* Hero */}
+  <section className="relative py-24 md:py-32 overflow-hidden">
+    <div className="container mx-auto px-4 md:px-6 text-center">
+      <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 to-neutral-700/80 dark:from-white dark:to-white/80 mb-6">
+        Page Title
+      </h1>
+      <p className="text-lg text-neutral-700/80 dark:text-white/70 max-w-2xl mx-auto mb-8">
+        Subtitle or description text
+      </p>
+      {/* Primary CTA button */}
+    </div>
+  </section>
+
+  {/* Features */}
+  <section className="py-16 md:py-24 border-t border-black/5 dark:border-white/5">
+    <div className="container mx-auto px-4 md:px-6">
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-center mb-12">
+        Section Title
+      </h2>
+      <div className="grid md:grid-cols-3 gap-6">
+        {/* Feature cards */}
+      </div>
+    </div>
+  </section>
+</main>
+```

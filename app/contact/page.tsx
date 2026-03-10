@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { Button } from "@/components";
 import { useState } from "react";
 import type { FormEvent } from "react";
 import emailjs from "@emailjs/browser";
@@ -63,17 +65,23 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen py-16 px-6">
+    <div className="min-h-screen bg-slate-50 py-20 px-6">
       <div className="max-w-xl mx-auto">
-        <h1 className="text-2xl font-semibold text-neutral-850">Contact</h1>
-        <p className="mt-4 text-stone-600 leading-relaxed">
+        <Link
+          href="/"
+          className="text-slate-600 hover:text-indigo-600 text-sm font-medium mb-8 inline-block transition-colors"
+        >
+          ← Back to home
+        </Link>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900">Contact</h1>
+        <p className="mt-4 text-slate-600 leading-relaxed">
           Share a bit about your team, workflow, and what you&apos;re looking to
           improve. I&apos;ll follow up to schedule a time to talk.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div>
-            <label className="block text-sm font-medium text-neutral-850">
+            <label className="block text-sm font-medium text-slate-900">
               Name
             </label>
             <input
@@ -81,12 +89,12 @@ export default function ContactPage() {
               value={name}
               onChange={(event) => setName(event.target.value)}
               required
-              className="mt-1 w-full rounded-md border border-stone-300 bg-white px-3 py-2 text-sm text-neutral-850 shadow-sm focus:border-neutral-800 focus:outline-none focus:ring-1 focus:ring-neutral-800"
+              className="mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-neutral-850">
+            <label className="block text-sm font-medium text-slate-900">
               Email
             </label>
             <input
@@ -94,24 +102,24 @@ export default function ContactPage() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               required
-              className="mt-1 w-full rounded-md border border-stone-300 bg-white px-3 py-2 text-sm text-neutral-850 shadow-sm focus:border-neutral-800 focus:outline-none focus:ring-1 focus:ring-neutral-800"
+              className="mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-neutral-850">
+            <label className="block text-sm font-medium text-slate-900">
               Phone
             </label>
             <input
               type="tel"
               value={phone}
               onChange={(event) => setPhone(event.target.value)}
-              className="mt-1 w-full rounded-md border border-stone-300 bg-white px-3 py-2 text-sm text-neutral-850 shadow-sm focus:border-neutral-800 focus:outline-none focus:ring-1 focus:ring-neutral-800"
+              className="mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-neutral-850">
+            <label className="block text-sm font-medium text-slate-900">
               Message
             </label>
             <textarea
@@ -119,7 +127,7 @@ export default function ContactPage() {
               onChange={(event) => setMessage(event.target.value)}
               required
               rows={5}
-              className="mt-1 w-full rounded-md border border-stone-300 bg-white px-3 py-2 text-sm text-neutral-850 shadow-sm focus:border-neutral-800 focus:outline-none focus:ring-1 focus:ring-neutral-800"
+              className="mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
             />
           </div>
 
@@ -129,27 +137,23 @@ export default function ContactPage() {
               type="checkbox"
               checked={smsOptIn}
               onChange={(event) => setSmsOptIn(event.target.checked)}
-              className="mt-1 h-4 w-4 rounded border-stone-300 text-neutral-850 focus:ring-neutral-800"
+              className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
             />
             <label
               htmlFor="sms-opt-in"
-              className="text-sm text-stone-600 leading-relaxed"
+              className="text-sm text-slate-600 leading-relaxed"
             >
               I agree to receive SMS messages related to my inquiry and
               understand that message and data rates may apply.
             </label>
           </div>
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="inline-flex items-center justify-center rounded-md bg-neutral-850 px-5 py-2.5 text-sm font-medium text-white hover:bg-neutral-700 disabled:opacity-70 disabled:cursor-not-allowed transition-colors"
-          >
+          <Button disabled={isSubmitting}>
             {isSubmitting ? "Sending..." : "Send message"}
-          </button>
+          </Button>
 
           {status && (
-            <p className="text-sm text-stone-600 mt-2" aria-live="polite">
+            <p className="text-sm text-slate-600 mt-2" aria-live="polite">
               {status}
             </p>
           )}

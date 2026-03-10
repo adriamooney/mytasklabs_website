@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Card } from "./Card";
 
 type TeamMemberProps = {
   name: string;
@@ -20,21 +21,27 @@ export function TeamMember({
   const content = (
     <>
       <div className="flex-shrink-0">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          width={160}
-          height={160}
-          className="h-40 w-40 rounded-full object-cover"
-        />
+        <div className="relative h-24 w-24 rounded-md bg-gradient-to-tr from-indigo-500 via-purple-500 to-cyan-400 p-[2px]">
+          <div className="h-full w-full rounded-md bg-slate-950 overflow-hidden">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              width={96}
+              height={96}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
       </div>
-      <h3 className="mt-4 text-lg font-semibold text-neutral-850">{name}</h3>
-      <p className="mt-1 text-sm text-stone-500">{role}</p>
+      <h3 className="mt-5 text-base font-semibold tracking-tight text-slate-50">
+        {name}
+      </h3>
+      <p className="mt-1 text-xs text-slate-400">{role}</p>
     </>
   );
 
   return (
-    <article className="flex flex-col items-center text-center">
+    <Card variant="dark" className="items-center text-center py-6">
       {profileUrl ? (
         <a
           href={profileUrl}
@@ -47,12 +54,12 @@ export function TeamMember({
       ) : (
         content
       )}
-      <div className="mt-3 space-y-2 text-sm text-stone-600 leading-relaxed">
+      <div className="mt-3 space-y-2 text-xs text-slate-400 leading-relaxed">
         {paragraphs.map((text, index) => (
           <p key={index}>{text}</p>
         ))}
       </div>
-    </article>
+    </Card>
   );
 }
 

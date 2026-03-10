@@ -14,11 +14,11 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-10 border-b border-stone-200 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-indigo-600/50 bg-indigo-600/95 backdrop-blur-sm shadow-[0_4px_12px_-2px_rgba(0,0,0,0.25)]">
       <div className="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
         <Link
           href="/"
-          className="text-lg font-bold text-neutral-850 hover:text-neutral-700 transition-colors"
+          className="text-lg font-bold text-white hover:text-indigo-100 transition-colors"
         >
           My Task Labs
         </Link>
@@ -29,7 +29,7 @@ export function Header() {
                 <Link
                   key={item.label}
                   href={item.href!}
-                  className="text-sm text-stone-600 hover:text-neutral-850 transition-colors"
+                  className="text-sm text-indigo-100 hover:text-white transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -43,7 +43,7 @@ export function Header() {
               <Link
                 key={item.label}
                 href={href}
-                className="text-sm text-stone-600 hover:text-neutral-850 transition-colors"
+                className="text-sm text-indigo-100 hover:text-white transition-colors"
               >
                 {item.label}
               </Link>

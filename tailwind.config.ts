@@ -21,6 +21,10 @@ const config: Config = {
           "sans-serif",
         ],
       },
+      boxShadow: {
+        "purple-glow": "0 0 30px 0 rgba(99, 102, 241, 0.85)",
+        "purple-glow-hover": "0 0 40px 0 rgba(99, 102, 241, 0.9)",
+      },
       colors: {
         neutral: {
           850: "#0b1020",

@@ -1,3 +1,4 @@
+import { Section } from "./Section";
 import { TeamMember } from "./TeamMember";
 
 const teamMembers = [
@@ -33,22 +34,28 @@ const teamMembers = [
   },
 ];
 
-export function Team() {
+type TeamProps = { tone?: "light" | "dark" };
+
+export function Team({ tone = "dark" }: TeamProps) {
   return (
-    <section id="about" className="py-16 px-6 bg-white">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-2xl font-semibold text-neutral-850">Team</h2>
-        <p className="mt-4 text-stone-600 leading-relaxed max-w-2xl">
-          The work at MyTask Labs sits at the intersection of operations,
-          intelligent automation, and practical implementation. 
-        </p>
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-          {teamMembers.map((member) => (
-            <TeamMember key={member.name} {...member} />
-          ))}
-        </div>
+    <Section id="about" tone={tone}>
+      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+        The Studio
+      </p>
+      <h2 className="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-50">
+        The team behind the systems
+      </h2>
+      <p className="mt-3 text-sm text-slate-400 leading-relaxed max-w-2xl">
+        MyTask Labs is a small, senior team at the intersection of operations,
+        intelligent automation, and implementation. We design systems that
+        ship—and stay reliable in production.
+      </p>
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {teamMembers.map((member) => (
+          <TeamMember key={member.name} {...member} />
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }
 
