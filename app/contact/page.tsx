@@ -15,7 +15,7 @@ export default function ContactPage() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
-  const [smsOptIn, setSmsOptIn] = useState(false);
+  const [smsOptIn, setSmsOptIn] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
 
@@ -24,6 +24,11 @@ export default function ContactPage() {
 
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
       setStatus("Email service is not configured.");
+      return;
+    }
+
+    if (!smsOptIn) {
+      setStatus("You must agree to receive SMS messages to submit this form.");
       return;
     }
 
@@ -53,7 +58,7 @@ export default function ContactPage() {
         setEmail("");
         setPhone("");
         setMessage("");
-        setSmsOptIn(false);
+        setSmsOptIn(true);
       } else {
         setStatus("Something went wrong. Please try again.");
       }
@@ -136,15 +141,15 @@ export default function ContactPage() {
               id="sms-opt-in"
               type="checkbox"
               checked={smsOptIn}
-              onChange={(event) => setSmsOptIn(event.target.checked)}
-              className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+              disabled
+              required
+              className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 disabled:cursor-not-allowed disabled:opacity-75"
             />
             <label
               htmlFor="sms-opt-in"
               className="text-sm text-slate-600 leading-relaxed"
             >
-              I agree to receive SMS messages related to my inquiry and
-              understand that message and data rates may apply.
+              I agree to receive SMS messages from My Task Labs related to my inquiry. Message & data rates may apply. Reply STOP to unsubscribe. View our <Link href='/privacy'>Privacy Policy</Link> and <Link href='/terms'>Terms of Service</Link>.
             </label>
           </div>
 
